@@ -7,5 +7,5 @@
       </div>
     </div>
   </div>
-  <p id="footer-text">This page is provided by <a class="link-flat" href="http://dissary.com" >Dissary Studios</a>. Visit the source at <a class="link-flat" href="https://github.com/Disary/Dawn/" >GitHub</a>!</p>
+  <p id="footer-text">This page is provided by <a class="link-flat" href="http://dissary.com" >Dissary Studios</a>. Visit the source at <a class="link-flat" href="https://github.com/Dissary/Dawn/" >GitHub</a>!</p>
 </div>

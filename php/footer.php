@@ -11,7 +11,7 @@
         <p class="footer-item"><a class="footer-link" href="#">MeantSoftware Watchlist</a></p>
       </div>
       <div class="float-reset"></div>
-        <p id="footer-text">This page is provided by <a class="link-flat" href="http://dissary.com" >Dissary Studios</a>. View the source at <a class="link-flat" href="https://github.com/Dissary/Dawn/" >GitHub</a>!</p>
+        <p id="footer-text">This page is provided by <a class="link-flat" href="http://dissary.com" >Dissary Studios</a>. View the source at <a class="link-flat" href="https://github.com/Dissary/Dawn/" >GitHub</a>! Running on <a class="link-ver" href="#"></a></p>
     </div>
   </div>
 </div>

@@ -34,5 +34,6 @@
 
 {{-- CSS Dateien --}}
 @section('css')
+    {!! Html::style('css/anime-list.css') !!}
     <style> #page-wrapper { margin-top:30px; }</style>
 @stop

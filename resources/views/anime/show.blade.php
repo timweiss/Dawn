@@ -27,8 +27,17 @@ Informationen zu {{ $anime->name }}. Mit Dawn hast du immer neue Vorschläge par
             <h2 id="anime-title">{{ $anime->name }}</h2>
             <h4 id="anime-alttitle">{{ $anime->altname }}</h4>
         </div>
-        <div class="col-lg-12">
-            <p>Test</p>
+        <div id="anime-meta" class="col-lg-3">
+            <div id="anime-meta-box">
+                <p class="anime-meta-info">Erste Folge: {{ $anime->released->format('d.m.Y') }}</p>
+                <p class="anime-meta-info">Folgen: {{ $anime->episodes }}</p>
+                <p class="anime-meta-info">Dauer pro Folge: {{ $anime->episodes_duration }} Minuten</p>
+                <p class="anime-meta-info">Gesamtlänge: {{ round($anime->episodes*$anime->episodes_duration/60, 2) }} Stunden</p>
+                <p class="anime-meta-info">Kategorien: {{ $anime->categories }}</p>
+            </div>
+        </div>
+        <div id="anime-description" class="col-lg-9">
+            <p class="anime-text">{{ $anime->description }}</p>
         </div>
     </div>
 @stop
@@ -105,6 +114,21 @@ Informationen zu {{ $anime->name }}. Mit Dawn hast du immer neue Vorschläge par
             font-size: 20px;
             font-family: "Exo 2", sans-serif;
             margin: 0 0 4px;
+        }
+        #anime-description{
+            padding:20px;
+        }
+        .anime-text{
+            font-size:16px;
+            font-family: "Exo 2", sans-serif;
+        }
+        #anime-meta{
+            padding:20px;
+        }
+        .anime-meta-info{
+            font-size:16px;
+            color:#4783BA;
+            font-family: "Exo 2", sans-serif;
         }
     </style>
 @stop

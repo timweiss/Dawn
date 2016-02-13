@@ -13,7 +13,7 @@ class AnimeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('contentcurator', ['except' => 'index']);
+        $this->middleware('contentcurator', ['except' => ['index', 'show']]);
     }
 
     public function index()

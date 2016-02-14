@@ -162,7 +162,7 @@ Schau dir jetzt die Liste von {{ $userlist->owner_name }} an! Erstelle auch du d
 
         }
         .anime-table-row{
-            height:75px;
+            height:50px;
         }
         .table-anime{
             width:100%;
@@ -197,7 +197,7 @@ Schau dir jetzt die Liste von {{ $userlist->owner_name }} an! Erstelle auch du d
             height:100%;
         }
         .table-cover-image{
-            height:75px;
+            height:50px;
             text-align: center;
         }
         .table-container{

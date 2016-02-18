@@ -84,6 +84,33 @@ class ProfileController extends Controller
 
     public function addToList($id, $state)
     {
+        $username = Auth::user()->pub_username;
+        $list = Animelist::where('owner_name', '=', $username)->first();
 
+        switch ($state)
+        {
+            case "watched":
+                $list->watched_anime = $list->watched_anime . ',' . $id;
+                $list->update();
+                break;
+            case "watching":
+                $list->watching_anime = $list->watching_anime . ',' . $id;
+                $list->update();
+                break;
+            case "paused":
+                $list->paused_anime = $list->paused_anime . ',' . $id;
+                $list->update();
+                break;
+            case "dropped":
+                $list->dropped_anime = $list->dropped_anime . ',' . $id;
+                $list->update();
+                break;
+            case "planned":
+                $list->planned_anime = $list->planned_anime . ',' . $id;
+                $list->update();
+                break;
+        }
+
+        return redirect('user/profile/list/');
     }
 }

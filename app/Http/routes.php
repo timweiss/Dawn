@@ -50,4 +50,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('user/profile/list/', 'ProfileController@useranimelist');
     Route::get('user/profile/getlist', 'ProfileController@getList');
     Route::get('user/profile/createlist', 'ProfileController@createList');
+    Route::get('user/profile/addtolist/{id}/{state}', 'ProfileController@addToList');
 });

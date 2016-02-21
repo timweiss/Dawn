@@ -8,6 +8,13 @@
 @section('description')
 Informationen zu {{ $anime->name }}. Mit Dawn hast du immer neue Vorschläge parat!
 @stop
+{{-- Meta Tags --}}
+@section('meta')
+    <meta property="og:url"                content="https://dawn.dissarystudios.net/anime/{{ $anime->id }}" />
+    <meta property="og:title"              content="{{ $anime->name }}" />
+    <meta property="og:description"        content="{{ mb_substr($anime->description, 0, 140, "UTF-8") }}..." />
+    <meta property="og:image"              content="https://storage.googleapis.com/dissary/dawn/images/banner/{{ $anime->headerimg_url }}" />
+@stop
 
 
 {{-- Seiteninhalt --}}
@@ -34,6 +41,22 @@ Informationen zu {{ $anime->name }}. Mit Dawn hast du immer neue Vorschläge par
                 <p class="anime-meta-info">Dauer pro Folge: {{ $anime->episodes_duration }} Minuten</p>
                 <p class="anime-meta-info">Gesamtlänge: {{ round($anime->episodes*$anime->episodes_duration/60, 2) }} Stunden</p>
                 <p class="anime-meta-info">Kategorien: {{ $anime->categories }}</p>
+                <p class="anime-meta-info">MyAnimeList: <a href="http://myanimelist.net/anime/{{ $anime->mal_id }}">{{ $anime->mal_id }}</a></p>
+                <div class="btn-group" id="list-buttom">
+                    <a href="/user/profile/addtolist/{{ $anime->id }}/watched" class="btn btn-success" role="button">Geschaut</a>
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Mehr...</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/profile/addtolist/{{ $anime->id }}/planned">Geplant</a></li>
+                        <li><a href="/user/profile/addtolist/{{ $anime->id }}/watching">Am Schauen</a></li>
+                        <li><a href="/user/profile/addtolist/{{ $anime->id }}/dropped">Abgebrochen</a></li>
+                        <li><a href="/user/profile/addtolist/{{ $anime->id }}/paused">Pausiert</a></li>
+                    </ul>
+                </div>
+                <br>
+                <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
             </div>
         </div>
         <div id="anime-description" class="col-lg-9">
@@ -50,7 +73,7 @@ Informationen zu {{ $anime->name }}. Mit Dawn hast du immer neue Vorschläge par
 {{-- CSS Dateien --}}
 @section('css')
     <style>
-        @import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+        @import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
         #page-wrapper { margin-top:30px; }
         #header-image {
             max-height:350px;
@@ -70,7 +93,7 @@ Informationen zu {{ $anime->name }}. Mit Dawn hast du immer neue Vorschläge par
         }
         #anime-title{
             margin-top:10px;
-            font-family: "Exo 2", Arial;
+            font-family: "Exo 2", sans-serif;
             text-align: center;
         }
         #anime-title:after{
@@ -129,6 +152,9 @@ Informationen zu {{ $anime->name }}. Mit Dawn hast du immer neue Vorschläge par
             font-size:16px;
             color:#4783BA;
             font-family: "Exo 2", sans-serif;
+        }
+        #list-buttom{
+            margin-bottom:10px;
         }
     </style>
 @stop

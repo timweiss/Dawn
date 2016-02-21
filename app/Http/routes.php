@@ -42,4 +42,13 @@ Route::group(['middleware' => ['web']], function () {
         'auth'      =>  'Auth\AuthController',
         'password'  =>  'Auth\PasswordController',
     ]);
+
+    // Nutzer
+    Route::get('user/logout', 'ProfileController@logout');
+    Route::get('user/dashboard', 'ProfileController@dashboard');
+    Route::get('user/profile/list/{username}', 'ProfileController@animelist');
+    Route::get('user/profile/list/', 'ProfileController@useranimelist');
+    Route::get('user/profile/getlist', 'ProfileController@getList');
+    Route::get('user/profile/createlist', 'ProfileController@createList');
+    Route::get('user/profile/addtolist/{id}/{state}', 'ProfileController@addToList');
 });

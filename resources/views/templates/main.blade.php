@@ -12,8 +12,14 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     @yield('css')
+    <style>
+        body{
+            padding-bottom:70px;
+        }
+    </style>
 </head>
 <body>
+    @include('includes.trackers')
     <!-- Navigationsleiste -->
     <nav class="navbar navbar-default navbar-fixed-top" id="basic-navbar" role="navigation">
         <div class="container">
@@ -24,25 +30,39 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/">Start</a></li>
                     <li><a href="/anime/">Anime</a></li>
-                    <li><a href="/recommendations/">Vorschläge</a></li>
+                    <li><a href="/recommendations/">Empfehlungen</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Nutzer<span class="caret"></span></a>
+                    @if(Auth::check())
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->pub_username }}<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="/user/list/">Meine Liste</a></li>
+                            <li class="dropdown-header">Nutzer</li>
+                            <li><a href="/user/dashboard/">Dashboard</a></li>
                             <li><a href="/user/profile/">Mein Profil</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/user/accsettings/">Kontoeinstellungen</a></li>
-                            <li><a href="/user/pgsettings/">Seiteneinstellungen</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/user/invite/">Lade einen Freund ein! <span class="badge">Neu</span></a></li>
+                            <li><a href="/user/profile/list">Meine Liste</a></li>
+                            <li><a href="/user/logout/">Abmelden</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Einstellungen</li>
+                            <li><a href="/user/settings/">Nutzereinstellungen</a></li>
+                            <li><a href="/user/pagesettings/">Seiteneinstellungen</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Sonstiges</li>
+                            <li><a href="/user/refer/">Referral-Programm</a></li>
                         </ul>
                     </li>
+                        @else
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Nutzer<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/auth/login/">Anmelden</a></li>
+                                    <li><a href="/auth/register/">Registrieren</a></li>
+                                </ul>
+                            </li>
+                    @endif
                 </ul>
             </div>
         </div>
     </nav>
-
+    @include('templates.includes.supernav')
     <!-- Inhalt -->
     <div id="page-wrapper">
         <div class="container" id="page-content">
@@ -54,8 +74,8 @@
         <div class="container" id="footer-container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p id="footer-text">Nyanpasu</p>
-                    <p>Copyright &copy; 2016 Tim Weiß/Dissary Studios &middot; All Rights Reserved &middot; <a href="https://dissarystudios.net/" >Dissary Studios</a></p>
+                    <p id="footer-text"><a href="https://www.youtube.com/watch?v=JAEbJs-rnVc">Nyanpasu</a></p>
+                    <p>Copyright &copy; 2016 <a href="https://weiss.moe">Tim Weiß</a>/Dissary Studios &middot; All Rights Reserved &middot; <a href="https://dissarystudios.net/" >Dissary Studios</a></p>
                     <p id="footer-links"><a href="/about/">Über</a> - <a href="/about/team/">Team</a> - <a href="https://github.com/Dissary/Dawn">GitHub</a> - Running <a href="https://github.com/Dissary/Dawn">Dawn 1.0dev</a></p>
                 </div>
             </div>

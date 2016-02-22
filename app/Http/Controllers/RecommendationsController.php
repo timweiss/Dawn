@@ -13,4 +13,9 @@ class RecommendationsController extends Controller
     {
         return view('recs.index');
     }
+
+    public function search()
+    {
+        return view('recs.search');
+    }
 }

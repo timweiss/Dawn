@@ -36,6 +36,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('anime', 'AnimeController@store');
     */
 
+    Route::get('anime/{id}/edit', 'AnimeController@edit');
     Route::get('anime/{id}/{name}', 'AnimeController@show');
     Route::resource('anime', 'AnimeController');
 
@@ -55,4 +56,5 @@ Route::group(['middleware' => ['web']], function () {
 
     //Empfehlungen
     Route::get('recommendations', 'RecommendationsController@index');
+    Route::get('recommendations/search', 'RecommendationsController@search');
 });
